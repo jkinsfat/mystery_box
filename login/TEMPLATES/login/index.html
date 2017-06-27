@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Please Login</title>
+    </head>
+    <body>
+        <h1>Welcome to Login</h1>
+        <h2>Register New Account</h2>
+        <form action="{% url 'auth:register' %}" method="post">
+                {%csrf_token%}
+                <label for="name">Name:</label>
+                <input id="name" type="text" name="name">
+                <p class="error" style="color:red">{{name}}</p>
+
+                <label for="username">Username:</label>
+                <input id="username" type="text" name="username">
+                <p class="error" style="color:red">{{username}}</p>
+
+                <label for="password">Password:</label>
+                <input id="password" type="text" name="password">
+                <p class="error" style="color:red">{{password}}</p>
+
+                <p>*password should be at least 8 characters</p>
+                <label for="password_confirm">Confirm Password:</label>
+                <input id="password_confirm" type="text" name="password_confirm">
+                <p class="error" style="color:red">{{password_confirm}}</p>
+
+                <input type="submit" name="Register">
+                <p class="error" style="color:red">{{result}}</p>
+        </form>
+        <h2>Login</h2>
+        <form action="{% url 'auth:login' %}" method="post">
+            {%csrf_token%}
+            <label for="login_username">Username:</label>
+            <input id="login_username" type="text" name="login_username">
+            <label for="login_password">Password:</label>
+            <input id="login_password" type="text" name="login_password">
+            <input type="submit" name="Login">
+            <p style="color:red">{{login_error}}</p>
+        </form>
+    </body>
+</html>

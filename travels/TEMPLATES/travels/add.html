@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Add a Trip</title>
+    </head>
+    <body>
+        <div class="headerbox">
+            <a class="header" href="{% url 'trav:home' %}">Home</a>
+            <a class="header" href="{% url 'auth:logout' %}">Logout</a>
+        </div>
+        <h2>Add a Trip</h2>
+        <form action="{% url 'trav:new_trip' %}" method="post">
+            {% csrf_token %}
+            <label for="dest">Destination:</label>
+            <input id="dest" type="text" name="destination">
+            <p style="color:red">{{destination}}</p>
+
+            <label for="desc">Description:</label>
+            <input id="desc" type="text" name="description">
+            <p style="color:red">{{description}}</p>
+
+            <label for="from">Travel Date From:</label>
+            <input id="from" type="date" name="date_from">
+            <p style="color:red">{{date_from}}</p>
+
+            <label for="to">Travel Date To:</label>
+            <input id="to" type="date" name="date_to">
+            <p style="color:red">{{date_to}}</p>
+
+            <input type="submit" name="Add">
+            <p style="color:red">{{result}}</p>
+        </form>
+    </body>
+</html>

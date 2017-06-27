@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Take a look at this trip!</title>
+    </head>
+    <body>
+        <div class="headerbox">
+            <a class="header" href="{% url 'trav:home' %}">Home</a>
+            <a class="header" href="{% url 'auth:logout' %}">Logout</a>
+        </div>
+
+        <h2>{{trip.destination}}</h2>
+        <p>Planned By: {{user.name}}</p>
+        <p>Description: {{trip.description}}</p>
+        <p>Travel Date From: {{trip.date_from}}</p>
+        <p>Travel Date To: {{trip.date_to}}</p>
+
+        <h3>Other User's Joining The Trip</h3>
+            {%for person in others %}
+            <p>{{person.user.name}}</p>
+            {% endfor %}
+    </body>
+</html>
